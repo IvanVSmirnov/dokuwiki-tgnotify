@@ -17,3 +17,8 @@ Version 1.0.2 (March 10, 2022)
 
 * Feature: Page URL added to message
 * Feature: Username or IP address added to message
+
+Version 1.0.3 (March 11, 2022)
+--------------------------------------------------------------------------------
+
+* Bug: plugin option 'enable' was ignored

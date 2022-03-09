@@ -14,7 +14,7 @@ if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 
 class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 {
-    const __PLUGIN_VERSION__ = '1.0.2';
+    const __PLUGIN_VERSION__ = '1.0.3';
 
     /**
      * plugin should use this method to register its handlers with the DokuWiki's event controller
@@ -40,7 +40,9 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
      */
     public function _handle(Doku_Event $event, $param)
     {
+        if ( $this->getConf('enable') ) {
         $this->transmitMessage($this->prepareMessage($event), $this->getConf('silent'));
+        }
     }
 
     
