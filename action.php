@@ -8,13 +8,11 @@
 
 if (!defined('DOKU_INC')) die();
 
-if (!defined('DOKU_LF')) define('DOKU_LF', "\n");
-if (!defined('DOKU_TAB')) define('DOKU_TAB', "\t");
 if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 
 class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 {
-    const __PLUGIN_VERSION__ = '1.0';
+    const __PLUGIN_VERSION__ = '1.0.1';
 
     /**
      * plugin should use this method to register its handlers with the DokuWiki's event controller
@@ -40,7 +38,7 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
      */
     public function _handle(Doku_Event $event, $param)
     {
-        $this->transmitMessage($this->prepareMessage($event));
+        $this->transmitMessage($this->prepareMessage($event), $this->getConf('silent'));
     }
 
     
@@ -86,7 +84,7 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
      *
      * @return   not required
      */
-    private function transmitMessage($text)
+    private function transmitMessage($text, $silent)
     {
         $token = $this->getConf('token');
         $chatid = $this->getConf('chatid');
@@ -103,6 +101,7 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
                     'chat_id' => $chatid,
                     'text' => $text,
                     'parse_mode' => 'MarkdownV2',
+                    'silent' => $silent,
                 ),
             )
         );
