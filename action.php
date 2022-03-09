@@ -10,9 +10,11 @@ if (!defined('DOKU_INC')) die();
 
 if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 
+
+
 class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 {
-    const __PLUGIN_VERSION__ = '1.0.1';
+    const __PLUGIN_VERSION__ = '1.0.2';
 
     /**
      * plugin should use this method to register its handlers with the DokuWiki's event controller
@@ -72,8 +74,24 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
                 break;
         }
 
-        $message .= sprintf($this->getLang('pagename'), $event->data['id']) . PHP_EOL;
+        // Add row with page name and url
+        $pagename = $event->data['id'];
+        $pageurl = rtrim(DOKU_URL, '/') . '/' . $pagename;
+        $message .= sprintf($this->getLang('pagename'), $pagename, $pageurl) . PHP_EOL;
+
+        // Add row with page size diff (in bytes)
         $message .= sprintf($this->getLang('sizechange'), $event->data['sizechange']) . PHP_EOL;
+
+        // Add row with username (if logged in) or IP address
+        global $USERINFO;
+        if ( isset($USERINFO['name']) ) {
+            $username = $USERINFO['name'];
+            $message .= sprintf($this->getLang('username'), $username) . PHP_EOL;
+        } else {
+            $useraddr = $_SERVER[REMOTE_ADDR];
+            $message .= sprintf($this->getLang('useraddr'), $useraddr) . PHP_EOL;
+        }
+
         return $message;
     }
 
