@@ -7,14 +7,13 @@
  */
 
 if (!defined('DOKU_INC')) die();
-
 if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 
 
 
 class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 {
-    const __PLUGIN_VERSION__ = '1.0.3';
+    const __PLUGIN_VERSION__ = '1.0.4';
 
     /**
      * plugin should use this method to register its handlers with the DokuWiki's event controller
@@ -86,10 +85,13 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 
         // Add row with username (if logged in) or IP address
         global $USERINFO;
-        if ( isset($USERINFO['name']) ) {
+        if ( $this->getConf('showuser') && isset($USERINFO['name']) ) {
             $username = $USERINFO['name'];
             $message .= sprintf($this->getLang('username'), $username) . PHP_EOL;
-        } else {
+        }
+
+        // Add row with  IP address
+        if ( $this->getConf('showaddr') ) {
             $useraddr = $_SERVER[REMOTE_ADDR];
             $message .= sprintf($this->getLang('useraddr'), $useraddr) . PHP_EOL;
         }
