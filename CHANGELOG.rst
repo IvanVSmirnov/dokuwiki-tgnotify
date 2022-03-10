@@ -22,3 +22,5 @@ Version 1.0.3 (March 11, 2022)
 --------------------------------------------------------------------------------
 
 * Bug: plugin option 'enable' was ignored
+* Feature: user name in message can be enabled/disabled in plugin config
+* Feature: user address (ip or fqdn) in message can be enabled/disabled in plugin config
