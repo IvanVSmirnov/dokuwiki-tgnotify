@@ -29,3 +29,4 @@ Version 1.0.4 (March 12, 2022)
 --------------------------------------------------------------------------------
 
 * Bug: plugin option 'silent' was ignored
+* Feature: Russian translation improved
