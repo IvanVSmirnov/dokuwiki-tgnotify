@@ -12,7 +12,7 @@ if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 
 class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 {
-    const __PLUGIN_VERSION__ = '1.0.4';
+    const __PLUGIN_VERSION__ = '1.0.5';
 
     /**
      * plugin should use this method to register its handlers with the DokuWiki's event controller
