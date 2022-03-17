@@ -30,3 +30,8 @@ Version 1.0.4 (March 12, 2022)
 
 * Bug: plugin option 'silent' was ignored
 * Feature: Russian translation improved
+
+Version 1.0.5 (March 12, 2022)
+--------------------------------------------------------------------------------
+
+* Bug: Modified page link fixed for english translation

@@ -122,7 +122,6 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
                     'chat_id' => $chatid,
                     'text' => $text,
                     'parse_mode' => 'MarkdownV2',
-                    'silent' => $silent ? 'true' : 'false',
                 ),
             )
         );
