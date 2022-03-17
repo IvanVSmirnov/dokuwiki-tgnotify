@@ -39,7 +39,7 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
     public function _handle(Doku_Event $event, $param)
     {
         if ( $this->getConf('enable') ) {
-            $this->transmitMessage($this->prepareMessage($event), $this->getConf('silent'));
+            $this->transmitMessage($this->prepareMessage($event));
         }
     }
 
