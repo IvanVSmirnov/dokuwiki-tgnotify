@@ -105,7 +105,7 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
      *
      * @return   not required
      */
-    private function transmitMessage($text, $silent)
+    private function transmitMessage($text)
     {
         $token = $this->getConf('token');
         $chatid = $this->getConf('chatid');
