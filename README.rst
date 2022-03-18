@@ -1,4 +1,4 @@
- dokuwiki-tgnotify
+dokuwiki-tgnotify
 ************************************************************************
 
 Package description
