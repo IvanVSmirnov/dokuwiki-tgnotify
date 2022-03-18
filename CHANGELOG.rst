@@ -35,3 +35,8 @@ Version 1.0.5 (March 17, 2022)
 --------------------------------------------------------------------------------
 
 * Bug: Modified page link fixed for english translation
+
+Version 1.0.6 (March 19, 2022)
+--------------------------------------------------------------------------------
+
+* Bug: plugin last update fixed to prevent wrong Plugin Manager notifications
