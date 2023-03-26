@@ -12,7 +12,7 @@ if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 
 class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 {
-    const __PLUGIN_VERSION__ = '1.0.5';
+    const __PLUGIN_VERSION__ = '1.0.7';
 
     /**
      * plugin should use this method to register its handlers with the DokuWiki's event controller
@@ -91,7 +91,7 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 
         // Add row with  IP address
         if ( $this->getConf('showaddr') ) {
-            $useraddr = $_SERVER[REMOTE_ADDR];
+	    $useraddr = $_SERVER['REMOTE_ADDR'] ?? $this->getLang('unknown');
             $message .= sprintf($this->getLang('useraddr'), $useraddr) . PHP_EOL;
         }
 
@@ -109,23 +109,24 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
     {
         $token = $this->getConf('token');
         $chatid = $this->getConf('chatid');
+        $url = 'https://api.telegram.org/bot' . $token . '/sendMessage';
 
-        $ch = curl_init();
-        curl_setopt_array(
-            $ch,
-            array(
-                CURLOPT_URL => 'https://api.telegram.org/bot' . $token . '/sendMessage',
-                CURLOPT_POST => true,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_TIMEOUT => 10,
-                CURLOPT_POSTFIELDS => array(
-                    'chat_id' => $chatid,
-                    'text' => $text,
-                    'parse_mode' => 'MarkdownV2',
-                ),
-            )
+        $data = array(
+            'chat_id' => $chatid,
+            'text' => $text,
+            'parse_mode' => 'MarkdownV2',
         );
-        curl_exec($ch);
+
+        $opts = array(
+            'http' => array(
+                'method'  => "POST",
+                'header' => "Content-type: application/json",
+                'timeout' => 10,
+                'content' => json_encode($data),
+            ),
+        );
+
+        file_get_contents($url, false, stream_context_create($opts));
     }
 
 }

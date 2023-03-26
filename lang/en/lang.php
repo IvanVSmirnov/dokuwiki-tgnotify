@@ -8,3 +8,4 @@ $lang["page-modified-minor"] = '*Minor changes*';
 $lang["page-reverted"] = '*Reverted to old version*';
 $lang["username"] = '__User__: `%s`';
 $lang["useraddr"] = '__Address__: `%s`';
+$lang["unknown"] = 'unknown';

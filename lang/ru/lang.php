@@ -8,3 +8,4 @@ $lang["page-modified-minor"] = '*Незначительное изменение
 $lang["page-reverted"] = '*Восстановлена предыдущая версия*';
 $lang["username"] = '__Имя пользователя__: `%s`';
 $lang["useraddr"] = '__Адрес__: `%s`';
+$lang["unknown"] = 'неопределен';
