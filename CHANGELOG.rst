@@ -40,3 +40,9 @@ Version 1.0.6 (March 19, 2022)
 --------------------------------------------------------------------------------
 
 * Bug: plugin last update fixed to prevent wrong Plugin Manager notifications
+
+
+Version 1.0.7 (March 27, 2023)
+--------------------------------------------------------------------------------
+
+* Feature: CURL dependency removed to support Dokuwiki Stick version
