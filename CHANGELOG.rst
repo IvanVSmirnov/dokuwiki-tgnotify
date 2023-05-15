@@ -46,3 +46,8 @@ Version 1.0.7 (March 27, 2023)
 --------------------------------------------------------------------------------
 
 * Feature: CURL dependency removed to support Dokuwiki Stick version
+
+Version 1.0.8 (May 17, 2023)
+--------------------------------------------------------------------------------
+
+* Feature: Plugin debug mode is added. May be activated at settings page.

@@ -12,7 +12,7 @@ if (!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN', DOKU_INC . 'lib/plugins/');
 
 class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 {
-    const __PLUGIN_VERSION__ = '1.0.7';
+    const __PLUGIN_VERSION__ = '1.0.8';
 
     /**
      * plugin should use this method to register its handlers with the DokuWiki's event controller
@@ -126,7 +126,14 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
             ),
         );
 
-        file_get_contents($url, false, stream_context_create($opts));
+        $content = file_get_contents($url, false, stream_context_create($opts));
+        $json = json_decode($content);
+        if ( $this->getConf('debug') ) {
+            error_log("[tgnotify] Request headers: " . var_dump($opts));
+            error_log("[tgnotify] Request content: " . var_dump($data));
+            error_log("[tgnotify] Response headers: " . var_dump($http_response_header));
+            error_log("[tgnotify] Response content: " . var_dump($json));
+        }
     }
 
 }
