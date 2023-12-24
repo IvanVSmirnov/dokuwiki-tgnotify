@@ -91,7 +91,7 @@ class action_plugin_tgnotify extends \dokuwiki\Extension\ActionPlugin
 
         // Add row with  IP address
         if ( $this->getConf('showaddr') ) {
-	    $useraddr = $_SERVER['REMOTE_ADDR'] ?? $this->getLang('unknown');
+            $useraddr = $_SERVER['REMOTE_ADDR'] ?? $this->getLang('unknown');
             $message .= sprintf($this->getLang('useraddr'), $useraddr) . PHP_EOL;
         }
 
