@@ -51,3 +51,8 @@ Version 1.0.8 (May 17, 2023)
 --------------------------------------------------------------------------------
 
 * Feature: Plugin debug mode is added. May be activated at settings page.
+
+Version 1.0.9 (Dec 24, 2023)
+--------------------------------------------------------------------------------
+
+* New language added: Ukrainian (UA)

@@ -1,7 +1,7 @@
 base   tgnotify
 author Ivan Smirnov
 email  ivsmir@gmail.com
-date   2023-05-17
+date   2023-12-24
 name   Telegram nofity
 desc   Notify page events via Telegram
 url    https://www.dokuwiki.org/plugin:tgnotify
